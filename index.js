@@ -30,6 +30,6 @@ provider.on(filter, async (log, event) => {
         to: process.env.ORACLE,
         data: callData
     })
-    //console.log(await provider.getTransactionReceipt(tx.hash)) 
+    
 });
 
