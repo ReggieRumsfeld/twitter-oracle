@@ -149,14 +149,11 @@ abstract contract TweetExecution is iCallBack {
     */
     function callBackExecute(TweetData calldata metrics, bytes32 execHash, bytes calldata params) external override {
         address from = wrapId(metrics.authorID); 
-        console.log("Output from Address: ", from); 
         (uint amount, address recipient) = abi.decode(params, (uint, address));
-        console.log("Amount: ", amount);
-        console.log("Recipient: ", recipient);
         uint _nonce = nonces[from];
-        console.log("Nonce: ", _nonce);
         bytes32 reconHash = keccak256(abi.encodePacked(address(this), from, _nonce, amount, recipient));
         require(execHash == reconHash, "Invalid execution command"); 
+        nonces[from]++;
         _transfer(from, amount, recipient);
     }
 
