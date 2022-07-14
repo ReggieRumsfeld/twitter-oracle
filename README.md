@@ -1,6 +1,6 @@
 # Twitter Oracle
 
-A twitter oracle feeding tweet related metrics onto the chain, including the result of checking the tweets for a specific hashtag. Optionally, the oracle's backend screens the tweets for an execution command a 32 bytes hash, and returns it with the callback. The execution hash is evaluated on chain, to allow for state changes (e.g. token transfers). 
+A twitter oracle feeding tweet related metrics onto the chain, including the result of checking the tweets for a specific hashtag. Optionally, the oracle's backend screens the tweets for an execution command - keccak256(execution address, authorID, nonce, params) - and returns it with the callback. The execution hash is evaluated on chain, to allow for state changes (e.g. token transfers). 
 
 The oracle backend is triggered by a Request event emitted by the oracle:
 
